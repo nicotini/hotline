@@ -1,0 +1,203 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.header {
+    transition: all .3s ease;
+    @include breakpoint(max-lg) {
+        position: relative;
+        z-index: 99999;
+    }
+    &--positioned {
+        @include breakpoint(lg) {
+            position: absolute;
+            background-color: transparent;
+            width: 100%;
+            top: 0;
+            transition: all .3s ease;
+            z-index: 9999;
+        }
+    }
+    &.header_bg {
+        @include breakpoint(lg) {
+            position: sticky;
+            background: $black-color;
+            .nav-link--active, .nav-link:hover {
+                color: $white-color;
+            }
+            .navbar--bottom-line {
+                border: none;
+            }
+        }
+    }
+
+
+}
+
+.navbar {
+    &--bottom-line {
+        @include breakpoint(lg) {
+            border-bottom: 1px solid rgba($white-color, $alpha:.3);
+        }
+    }
+    
+    .navbar-collapse {
+        @include breakpoint(max-lg) {
+            text-align: center;
+        }
+    }
+}
+
+// .nav-link {
+//     color: $title-color;
+//     padding: 10px 25px !important;
+//     @extend %text-samibold;
+//     &--active,
+//     &:hover, &:active, &:checked, &:focus, &.active {
+//         color: $white-color;
+//         text-decoration: line-through;
+//         @include breakpoint(lg) {
+//             color: $theme-color;
+//         }
+//     }
+// }
+
+.menu {
+    ul {
+        @extend %flex;
+        @include breakpoint(max-lg) {
+            justify-content: center;
+        }
+        li {
+            @extend %p-rel;
+            @include breakpoint(max-lg) {
+                width: 100%;
+                border-bottom: 1px solid rgba($white-color, $alpha: .3);
+            }
+            &:hover {
+                >ul {
+                    top: calc(100% - 0px);
+                    // @include add-prefix(transform, (scale(1)));
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            a {
+                @extend %p-20;
+                @extend %d-inline-block;
+                @extend %text-capitalize;
+                @extend %text-bold;
+                color: $title-color;
+                @include breakpoint(max-lg) {
+                    display: block;
+                    text-align: center;
+                    padding: 10px 0;
+                }
+                &:hover, &.active {
+                    color: $theme-color;
+                }
+            }
+            ul {
+                // @extend %p-abs;
+                width: 160px;
+                margin: 0 auto;
+                z-index: 999;;
+                background: $white-color;
+                top: calc(100% + 50px);
+                left: 0;
+                @include add-prefix(transition, (all .3s ease));
+                @include breakpoint(max-lg) {
+                    display: none;
+                }
+                @include breakpoint(lg) {
+                    position: absolute;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+                li {
+                    @extend %w-100;
+                    @include breakpoint(lg) {
+                        border-bottom: 1px solid $border-color;
+                        &:last-child {
+                            border: none;
+                        }
+                    }
+                    a {
+                        @extend %d-block;
+                        padding: 10px 15px;
+                        &:hover, &.active {
+                            color: $white-color;
+                            background: $theme-color;
+                            @extend %pl-20;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar-toggler {
+    @extend %p-0;
+    @extend %mb-10;
+
+    &:focus {
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+
+
+
+    &--icon {
+        @extend %p-rel;
+        @extend %d-inline-block;
+        background-color: $theme-color;
+        height: 2px;
+        width: 27px;
+        @include add-prefix(transform, rotate(45deg) translateY(-5px));
+
+        &:after,
+        &:before {
+            @extend %p-abs;
+            @extend %w-100;
+            background-color: $theme-color;
+            height: 2px;
+            @include add-prefix(transition, .3s all linear);
+        }
+
+        &:after {
+            bottom: 7px;
+            left: 0;
+            @include add-prefix(transform, rotate(-90deg) translateX(-6px));
+        }
+
+        &:before {
+            top: 7px;
+            left: 0;
+            opacity: 0;
+            @include add-prefix(transform, translateX(20px))
+        }
+
+
+    }
+
+    &.collapsed {
+        .navbar-toggler--icon {
+            transform: none;
+
+            &:after {
+                transform: none;
+            }
+
+            &:before {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    }
+}
+
+.search-icon, .cart-icon {
+    @extend %c-pointer;
+}
