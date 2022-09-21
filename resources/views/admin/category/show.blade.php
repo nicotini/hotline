@@ -48,7 +48,7 @@
                   
                     <td>
                         <div class="font-22">	
-                          <a href="">
+                          <a href="{{route('admin.category.edit', $category->id)}}">
                             <i class="lni lni-pencil"></i>
                           </a>
                         </div>
