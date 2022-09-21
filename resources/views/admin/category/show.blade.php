@@ -54,11 +54,15 @@
                         </div>
                     </td>
                     <td>
-                      <div class="font-22">	
-                        <a href="">
-                          <i class="lni lni-trash"></i>
-                        </a>
-                      </div>
+                      <form action="{{route('admin.category.delete', $category->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <div class="font-22">	
+                          <button type="submit" class="bg-transparent border-0">
+                              <i class="lni lni-trash"></i>
+                          </button>
+                        </div>
+                      </form>
                     </td>
                   </tr>
                   </tbody>
