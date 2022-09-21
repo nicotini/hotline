@@ -1,0 +1,22 @@
+.pageheader-section {
+    padding: 120px 0;
+    background: $ash-color;
+}
+.pageheader {
+    @extend %flex;
+    @extend %justify-between;
+    &__title {
+        h2 {
+            @extend %text-uppercase;
+            @include font-size(24px);
+            @include breakpoint(sm) {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__breadcamp {
+        .breadcrumb {
+            @extend %mb-0;
+        }
+    }
+}

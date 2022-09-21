@@ -1,5 +1,18 @@
 <?php
 
+use App\Http\Controllers\Main\IndexController;
+
+use App\Http\Controllers\Admin\Main\IndexController as AdminMainIndexController;
+
+use App\Http\Controllers\Admin\Category\IndexController as AdminCategoryIndexController;
+use App\Http\Controllers\Admin\Category\CreateController as AdminCategoryCreateController;
+use App\Http\Controllers\Admin\Category\StoreController as AdminCategoryStoreController;
+use App\Http\Controllers\Admin\Category\ShowController as AdminCategoryShowController;
+use App\Http\Controllers\Admin\Category\EditController as AdminCategoryEditController;
+use App\Http\Controllers\Admin\Category\UpdateController as AdminCategoryUpdateController;
+use App\Http\Controllers\Admin\Category\DestroyController as AdminCategoryDestroyController;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +26,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([], function () {
+    Route::get('/', IndexController::class)->name('index');
+});
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::group([],function () {
+        Route::get('/', AdminMainIndexController::class)->name('main.index');
+    });
+    Route::prefix('categories')->name('category.')->group(function () {
+        Route::get('/', AdminCategoryIndexController::class)->name('index');
+        Route::get('/create', AdminCategoryCreateController::class)->name('create');
+        Route::post('/', AdminCategoryStoreController::class)->name('store');
+        Route::get('/{category}', AdminCategoryShowController::class)->name('show');
+        Route::get('/{category}/edit', AdminCategoryEditController::class)->name('edit');
+        Route::patch('/{category}', AdminCategoryUpdateController::class)->name('update');
+        Route::delete('/{category}', AdminCategoryDestroyController::class)->name('delete');
+    });
 });
 
 Auth::routes();
