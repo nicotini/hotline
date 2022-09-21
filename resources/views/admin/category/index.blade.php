@@ -43,32 +43,34 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($categories as $category)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{$category->id}}</th>
+                  <td>{{$category->title}}</td>
+                  <td>
+                    <div class="font-22">	
+                      <a href="{{route('admin.category.show', $category->id)}}">
+                        <i class="lni lni-eye"></i></td>
+                      </a>
+                      
+                    </div>
+                  <td>
+                      <div class="font-22">	
+                        <a href="">
+                          <i class="lni lni-pencil"></i>
+                        </a>
+                      </div>
+                  </td>
+                  <td>
+                    <div class="font-22">	
+                      <a href="">
+                        <i class="lni lni-trash"></i>
+                      </a>
+                    </div>
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@mdo</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@mdo</td>
-                </tr>
+               @endforeach
+                
               </tbody>
             </table>
           </div>
