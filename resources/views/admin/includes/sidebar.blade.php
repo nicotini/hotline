@@ -17,7 +17,7 @@
         <li class="menu-label">Blog</li>
         
         <li>
-          <a href="{{ route('admin.category.index')}}">
+          <a href="{{ route('admin.category.index') }}">
             <div class="parent-icon">
               <i class="lni lni-folder"></i>
             </div>
@@ -25,11 +25,11 @@
           </a>
         </li>
         <li>
-          <a href="pages-edit-profile.html">
+          <a href="{{ route('admin.tag.index') }}">
             <div class="parent-icon">
               <i class="bi bi-pencil-square"></i>
             </div>
-            <div class="menu-title">Edit Profile</div>
+            <div class="menu-title">Tags</div>
           </a>
         </li>
         <li>
