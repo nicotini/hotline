@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="semi-dark">
+<html lang="en" class="semi-dark h-100">
 
 <head>
   <!-- Required meta tags -->
@@ -33,7 +33,7 @@
   <title>Blog Admin Panel</title>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 
 
   <!--start wrapper-->
@@ -159,10 +159,12 @@
 
 
     <!--start footer-->
-    <footer class="footer">
-      <div class="footer-text">
-        Copyright © 2021. All right reserved.
-      </div>
+    <footer class="footer mt-auto py-3 position-fixed">
+        <div class="container">
+            <div class="footer-text">
+                Copyright © 2021. All right reserved.
+            </div>
+        </div>
     </footer>
     <!--end footer-->
 

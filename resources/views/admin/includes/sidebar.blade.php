@@ -14,14 +14,14 @@
       <!--navigation-->
       <ul class="metismenu" id="menu">
        
-        <li class="menu-label">Pages</li>
+        <li class="menu-label">Blog</li>
         
         <li>
-          <a href="pages-user-profile.html">
+          <a href="{{ route('admin.category.index')}}">
             <div class="parent-icon">
-              <i class="bi bi-person"></i>
+              <i class="lni lni-folder"></i>
             </div>
-            <div class="menu-title">User Profile</div>
+            <div class="menu-title">Categories</div>
           </a>
         </li>
         <li>

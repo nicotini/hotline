@@ -3,6 +3,10 @@
 use App\Http\Controllers\Main\IndexController;
 
 use App\Http\Controllers\Admin\Main\IndexController as AdminMainIndexController;
+
+use App\Http\Controllers\Admin\Category\IndexController as AdminCategoryIndexController;
+use App\Http\Controllers\Admin\Category\CreateController as AdminCategoryCreateController;
+use App\Http\Controllers\Admin\Category\StoreController as AdminCategoryStoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +26,11 @@ Route::group([], function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::group([],function () {
         Route::get('/', AdminMainIndexController::class)->name('main.index');
+    });
+    Route::prefix('categories')->name('category.')->group(function () {
+        Route::get('/', AdminCategoryIndexController::class)->name('index');
+        Route::get('/create', AdminCategoryCreateController::class)->name('create');
+        Route::post('/', AdminCategoryStoreController::class)->name('store');
     });
 });
 
