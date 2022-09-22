@@ -27,17 +27,17 @@
         <li>
           <a href="{{ route('admin.tag.index') }}">
             <div class="parent-icon">
-              <i class="bi bi-pencil-square"></i>
+              <i class="lni lni-tag"></i>
             </div>
             <div class="menu-title">Tags</div>
           </a>
         </li>
         <li>
-          <a href="pages-invoices.html">
+          <a href="{{ route('admin.post.index') }}">
             <div class="parent-icon">
-              <i class="bi bi-printer"></i>
+              <i class="lni lni-files"></i>
             </div>
-            <div class="menu-title">Invoice</div>
+            <div class="menu-title">Posts</div>
           </a>
         </li>
         <li>
