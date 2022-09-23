@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('post_tags', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
             $table->bigInteger('post_id')->unsigned();
             $table->bigInteger('tag_id')->unsigned();
