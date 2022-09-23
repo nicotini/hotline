@@ -26,7 +26,7 @@
   <link href="{{asset('assets/admin/css/icons.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
+   <link rel="stylesheet" href="{{asset('assets/admin/plugins/input-tags/css/tagsinput.css')}}">
   <!--Theme Styles-->
   <link href="{{asset('assets/admin/css/dark-theme.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/admin/css/semi-dark.css')}}" rel="stylesheet" />
@@ -200,7 +200,7 @@
   
   <script src="{{asset('assets/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
   <script src="{{asset('assets/admin/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
-  
+  <script src="{{ asset('assets/admin/plugins/input-tags/js/tagsinput.js')}}"></script>
   
   <!-- <script src="{{asset('assets/admin/js/index.js')}}"></script> -->
   <!-- Main JS-->

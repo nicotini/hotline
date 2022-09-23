@@ -32,7 +32,7 @@
                   <div class="border p-3 rounded">
                   <h6 class="mb-0 text-uppercase">Create post</h6>
                   <hr>
-                  <form class="row g-3" method="post" action="{{route('admin.post.store')}}">
+                  <form class="row g-3" method="post" action="{{route('admin.post.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
                       <label class="form-label">Name of post</label>
@@ -46,6 +46,20 @@
                       <textarea id="summernote" name="content" type="text" class="form-control" name="title"></textarea>
                     </div>
                     @error('content')
+                    {{ $message }}
+                    @enderror
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Preview</label>
+                      <input class="form-control" name="preview_image" type="file" id="formFile">
+                    </div>
+                    @error('preview_image')
+                    {{ $message }}
+                    @enderror
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Main image</label>
+                      <input class="form-control" type="file" name="main_image" id="formFile">
+                    </div>
+                    @error('main_image')
                     {{ $message }}
                     @enderror
                     <div class="col-12">
