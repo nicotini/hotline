@@ -70,7 +70,7 @@
               </div>
             </div>
               <div class="col">
-                  <a href="{{route('admin.post.index')}}" type="button" class="btn btn-primary px-5">Return to all categories</a>
+                  <a href="{{route('admin.post.index')}}" type="button" class="btn btn-primary px-5">Return to posts</a>
                 </div>
           </div>
         </div>
