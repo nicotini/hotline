@@ -26,7 +26,7 @@
         <!--end breadcrumb-->
         <div class="container">
           <div class="row">
-            <div class="col-8">
+            <div class="col-12">
             <div class="card">
                 <div class="card-body">
                   <div class="border p-3 rounded">
@@ -39,6 +39,13 @@
                       <input type="text" class="form-control" name="title">
                     </div>
                     @error('title')
+                    {{ $message }}
+                    @enderror
+                    <div class="col-12">
+                      <label class="form-label">Content</label>
+                      <textarea id="summernote" name="content" type="text" class="form-control" name="title"></textarea>
+                    </div>
+                    @error('content')
                     {{ $message }}
                     @enderror
                     <div class="col-12">

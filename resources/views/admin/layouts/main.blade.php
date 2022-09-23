@@ -16,7 +16,9 @@
   <link href="{{asset('assets/admin/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/admin/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
-
+  
+<!-- summernote -->
+<link rel="stylesheet" href="{{ asset('assets/admin/plugins/summernote/summernote-lite.min.css') }}">
   <!-- CSS Files -->
   <link href="{{asset('assets/admin/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('assets/admin/css/bootstrap-extended.css')}}" rel="stylesheet">
@@ -190,16 +192,37 @@
   <script src="{{asset('assets/admin/js/jquery.min.js')}}"></script>
   <script src="{{asset('assets/admin/plugins/simplebar/js/simplebar.min.js')}}"></script>
   <script src="{{asset('assets/admin/plugins/metismenu/js/metisMenu.min.js')}}"></script>
+  <script src="{{ asset('assets/admin/plugins/summernote/summernote-lite.min.js') }}"></script>
   <script src="{{asset('assets/admin/js/bootstrap.bundle.min.js')}}"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <!--plugins-->
+  <!-- Summernote -->
+  
   <script src="{{asset('assets/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
   <script src="{{asset('assets/admin/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
+  
   
   <!-- <script src="{{asset('assets/admin/js/index.js')}}"></script> -->
   <!-- Main JS-->
   <script src="{{asset('assets/admin/js/main.js')}}"></script>
-
+  <script>
+    
+     $(function () {
+    // Summernote
+    $('#summernote').summernote({
+      toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough', 'superscript', 'subscript']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['height', ['height']]
+    ]
+    })
+  
+    });
+  </script>
 
 </body>
 
