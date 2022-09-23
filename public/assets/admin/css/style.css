@@ -1546,3 +1546,7 @@ ul.categories-list li {
         height: auto;
     }
 }
+/* add some styles for editor*/
+.note-btn.dropdown-toggle.dropdown-toggle::after {
+    display:none!important;
+    }
