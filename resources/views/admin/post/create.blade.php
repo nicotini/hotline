@@ -39,29 +39,46 @@
                       <input type="text" class="form-control" name="title">
                     </div>
                     @error('title')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="col-12">
                       <label class="form-label">Content</label>
                       <textarea id="summernote" name="content" type="text" class="form-control" name="title"></textarea>
                     </div>
                     @error('content')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="mb-3">
                       <label for="formFile" class="form-label">Preview</label>
                       <input class="form-control" name="preview_image" type="file" id="formFile">
                     </div>
                     @error('preview_image')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="mb-3">
                       <label for="formFile" class="form-label">Main image</label>
                       <input class="form-control" type="file" name="main_image" id="formFile">
                     </div>
                     @error('main_image')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div>   
                     @enderror
+                    <div class="mb-3">
+                      <label class="form-label">Choose a category</label>
+                      <select name="category_id" class="form-select mb-3">
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}" 
+                        {{ $category->id == old('category_id') ? ' selected' : ''}} >{{ $category->title }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Choose tags</label>
+                      <select class="multiple-select" name="tag_ids[]" data-placeholder="Choose anything" multiple="multiple">
+                        @foreach($tags as $tag)
+                        <option {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ?  ' selected' : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
+                        @endforeach
+                      </select>
+                    </div>
                     <div class="col-12">
                       <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Create</button>
