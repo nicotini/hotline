@@ -16,6 +16,8 @@
   <link href="{{asset('assets/admin/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/admin/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/admin/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
   
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/summernote/summernote-lite.min.css') }}">
@@ -201,7 +203,8 @@
   <script src="{{asset('assets/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
   <script src="{{asset('assets/admin/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
   <script src="{{ asset('assets/admin/plugins/input-tags/js/tagsinput.js')}}"></script>
-  
+  <script src="{{ asset('assets/admin/plugins/select2/js/select2.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/js/form-select2.js') }}"></script>
   <!-- <script src="{{asset('assets/admin/js/index.js')}}"></script> -->
   <!-- Main JS-->
   <script src="{{asset('assets/admin/js/main.js')}}"></script>
