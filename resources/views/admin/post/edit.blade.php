@@ -51,7 +51,7 @@
                     @enderror
                     <div class="mb-3">
                       <div>
-                        <img src="{{ asset('storage/' . $post->main_image)}}" alt="{{ $post->title}}" class="w-50">
+                        <img src="{{ asset('storage/' . $post->preview_image)}}" alt="{{ $post->title}}" class="w-50">
                       </div>
                       <label for="formFile" class="form-label">Preview</label>
                       <input class="form-control" name="preview_image" type="file" id="formFile" >
