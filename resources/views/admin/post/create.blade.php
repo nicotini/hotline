@@ -62,6 +62,15 @@
                     @error('main_image')
                     {{ $message }}
                     @enderror
+                    <div class="mb-3">
+                      <label class="form-label">Choose a category</label>
+                      <select name="category_id" class="form-select mb-3">
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}" 
+                        {{ $category->id == old('category_id') ? ' selected' : ''}} >{{ $category->title }}</option>
+                        @endforeach
+                      </select>
+                    </div>
                     <div class="col-12">
                       <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Create</button>
