@@ -40,14 +40,14 @@
                       <input type="text" class="form-control" name="title" value="{{ $post->title }}">
                     </div>
                     @error('title')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="col-12">
                       <label class="form-label">Content</label>
                       <textarea id="summernote" name="content" type="text" class="form-control" name="title">{{ $post->content }}</textarea>
                     </div>
                     @error('content')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="mb-3">
                       <div>
@@ -57,7 +57,7 @@
                       <input class="form-control" name="preview_image" type="file" id="formFile" >
                     </div>
                     @error('preview_image')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="mb-3">
                     <div class="w-25">
@@ -67,7 +67,7 @@
                       <input class="form-control" type="file" name="main_image" id="formFile">
                     </div>
                     @error('main_image')
-                    {{ $message }}
+                    <div class="link-danger">{{ $message }}</div> 
                     @enderror
                     <div class="mb-3">
                       <label class="form-label">Choose a category</label>
