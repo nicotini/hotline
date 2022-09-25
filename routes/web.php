@@ -28,6 +28,14 @@ use App\Http\Controllers\Admin\Post\EditController as AdminPostEditController;
 use App\Http\Controllers\Admin\Post\UpdateController as AdminPostUpdateController;
 use App\Http\Controllers\Admin\Post\DestroyController as AdminPostDestroyController;
 
+use App\Http\Controllers\Admin\User\IndexController as AdminUserIndexController;
+use App\Http\Controllers\Admin\User\CreateController as AdminUserCreateController;
+use App\Http\Controllers\Admin\User\StoreController as AdminUserStoreController;
+use App\Http\Controllers\Admin\User\ShowController as AdminUserShowController;
+use App\Http\Controllers\Admin\User\EditController as AdminUserEditController;
+use App\Http\Controllers\Admin\User\UpdateController as AdminUserUpdateController;
+use App\Http\Controllers\Admin\User\DestroyController as AdminUserDestroyController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +85,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{post}/edit', AdminPostEditController::class)->name('edit');
         Route::patch('/{post}', AdminPostUpdateController::class)->name('update');
         Route::delete('/{post}', AdminPostDestroyController::class)->name('delete');
+    });
+
+    Route::prefix('users')->name('user.')->group(function () {
+        Route::get('/', AdminUserIndexController::class)->name('index');
+        Route::get('/create', AdminUserCreateController::class)->name('create');
+        Route::post('/', AdminUserStoreController::class)->name('store');
+        Route::get('/{user}', AdminUserShowController::class)->name('show');
+        Route::get('/{user}/edit', AdminUserEditController::class)->name('edit');
+        Route::patch('/{user}', AdminUserUpdateController::class)->name('update');
+        Route::delete('/{user}', AdminUserDestroyController::class)->name('delete');
     });
 });
 
