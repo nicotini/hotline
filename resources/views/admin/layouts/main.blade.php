@@ -144,7 +144,12 @@
                       <div class="">
                         <ion-icon name="log-out-outline"></ion-icon>
                       </div>
-                      <div class="ms-3"><span>Logout</span></div>
+                      <div class="ms-3">
+                        <form action="{{ route('logout') }}" method="post">
+                          @csrf
+                          <input type="submit" value="Logout">
+                        </form>
+                    </div>
                     </div>
                   </a>
                 </li>
