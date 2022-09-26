@@ -49,7 +49,22 @@
                     @error('email')
                     {{ $message }}
                     @enderror
-                    
+                    <div class="mb-3">
+                      <label class="form-label">Choose a user's role</label>
+                      <select name="role" class="form-select mb-3">
+                        @foreach($roles as $id => $role)
+                        <option value="{{ $id }}" 
+                        {{ $id == $user->role ? ' selected' : ''}} >{{ $role }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    @error('password')
+                    {{ $message }}
+                    @enderror
+                    <div class="col-12">
+                     
+                      <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    </div>
                     <div class="col-12">
                       <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Update</button>

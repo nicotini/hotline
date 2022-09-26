@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([], function () {
     Route::get('/', IndexController::class)->name('index');
 });
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::group([],function () {
         Route::get('/', AdminMainIndexController::class)->name('main.index');
     });
