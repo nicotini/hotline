@@ -22,10 +22,15 @@ class UpdateRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
+    { 
+       
         return [
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
+            'email' => 'required|string|email|unique:users,email,'.$this->user_id,
+            'user_id' => 'required|integer|exists:users,id',
+            'role' => 'required|integer',
+            
+           
         ];
     }
 

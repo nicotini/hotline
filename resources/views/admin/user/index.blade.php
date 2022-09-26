@@ -37,6 +37,7 @@
                 <tr>
                   <th scope="col">Id</th>
                   <th scope="col">Name of user</th>
+                  <th scope="col">Role</th>
                   <th scope="col">See user</th>
                   <th scope="col">Edit user</th>
                   <th scope="col">Delete user</th>
@@ -47,6 +48,11 @@
                 <tr>
                   <th scope="row">{{$user->id}}</th>
                   <td>{{$user->name}}</td>
+                  @foreach($roles as $id => $role)
+                  @if($user->role == $id)
+                  <td>{{ $role }}</td>
+                  @endif
+                  @endforeach
                   <td>
                     <div class="font-22">	
                       <a href="{{route('admin.user.show', $user->id)}}">
