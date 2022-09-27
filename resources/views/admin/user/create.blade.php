@@ -48,13 +48,6 @@
                     @error('email')
                     {{ $message }}
                     @enderror
-                    <div class="col-12">
-                      <label class="form-label">Password</label>
-                      <input type="text" class="form-control" name="password">
-                    </div>
-                    @error('password')
-                    {{ $message }}
-                    @enderror
                     <div class="mb-3">
                       <label class="form-label">Choose a user's role</label>
                       <select name="role" class="form-select mb-3">
@@ -64,7 +57,7 @@
                         @endforeach
                       </select>
                     </div>
-                    @error('password')
+                    @error('role')
                     {{ $message }}
                     @enderror
                     <div class="col-12">

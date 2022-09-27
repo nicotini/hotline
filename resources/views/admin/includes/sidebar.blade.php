@@ -15,6 +15,14 @@
       <ul class="metismenu" id="menu">
        
         <li class="menu-label">Blog</li>
+        <li>
+          <a href="{{ route('admin.main.index') }}">
+            <div class="parent-icon">
+            <i class="lni lni-home"></i>
+            </div>
+            <div class="menu-title">Home</div>
+          </a>
+        </li>
 
         <li>
           <a href="{{ route('admin.user.index') }}">

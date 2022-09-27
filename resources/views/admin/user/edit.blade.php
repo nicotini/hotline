@@ -58,7 +58,7 @@
                         @endforeach
                       </select>
                     </div>
-                    @error('password')
+                    @error('role')
                     {{ $message }}
                     @enderror
                     <div class="col-12">
