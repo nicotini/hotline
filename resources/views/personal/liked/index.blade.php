@@ -70,7 +70,6 @@
               </div>
             </div>
           </div>
-        
       </div>
       <!-- end page content-->
     </div>
