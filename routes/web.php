@@ -4,6 +4,18 @@ use App\Http\Controllers\Main\IndexController;
 
 use App\Http\Controllers\Admin\Main\IndexController as AdminMainIndexController;
 
+use App\Http\Controllers\Personal\Main\IndexController as PersonalMainIndexController;
+use App\Http\Controllers\Personal\Liked\IndexController as PersonalLikedIndexController;
+use App\Http\Controllers\Personal\Liked\DestroyController as PersonalLikedDestroyController;
+
+use App\Http\Controllers\Personal\Comment\IndexController as PersonalCommentIndexController;
+use App\Http\Controllers\Personal\Comment\EditController as PersonalCommentEditController;
+use App\Http\Controllers\Personal\Comment\UpdateController as PersonalCommentUpdateController;
+use App\Http\Controllers\Personal\Comment\DestroyController as PersonalCommentDestroyController;
+
+
+
+
 use App\Http\Controllers\Admin\Category\IndexController as AdminCategoryIndexController;
 use App\Http\Controllers\Admin\Category\CreateController as AdminCategoryCreateController;
 use App\Http\Controllers\Admin\Category\StoreController as AdminCategoryStoreController;
@@ -53,6 +65,25 @@ use Illuminate\Support\Facades\Route;
 Route::group([], function () {
     Route::get('/', IndexController::class)->name('index');
 });
+
+Route::middleware(['auth', 'verified'])->prefix('personal')->name('personal.')->group(function () {
+    Route::group([],function () {
+        Route::get('/', PersonalMainIndexController::class)->name('main.index');
+    });
+
+    Route::prefix('liked')->name('liked.')->group(function () {
+        Route::get('/', PersonalLikedIndexController::class)->name('index');
+        Route::delete('/{post}', PersonalLikedDestroyController::class)->name('delete');
+    });
+
+    Route::prefix('comment')->name('comment.')->group(function () {
+        Route::get('/', PersonalCommentIndexController::class)->name('index');
+        Route::get('/{comment}/edit', PersonalCommentEditController::class)->name('edit');
+        Route::patch('/{comment}', PersonalCommentUpdateController::class)->name('update');
+        Route::delete('/{comment}', PersonalCommentDestroyController::class)->name('delete');
+    });
+});
+
 Route::middleware(['auth','admin', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::group([],function () {
         Route::get('/', AdminMainIndexController::class)->name('main.index');
