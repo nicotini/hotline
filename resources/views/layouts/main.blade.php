@@ -37,53 +37,30 @@
     <header class="header" id="navbar">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logo/02.png" alt="Heal"></a>
+                <a class="navbar-brand" href="index.html"><img src="{{  asset('assets/images/logo/02.png')}}" alt="Heal"></a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler--icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNavAltMarkup">
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="#0">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Home Page 1</a></li>
-                                    <li><a href="index-2.html">Home Page 2</a></li>
-                                    <li><a href="index-3.html">Home Page 3</a></li>
-                                </ul>
+                                <a href="{{ route('main.index')}}" class="active">Blog</a>
                             </li>
-                            <li>
-                                <a href="#0">Events</a>
-                                <ul>
-                                    <li><a href="event.html">Event</a></li>
-                                    <li><a href="event-grid.html">Event Grid View</a></li>
-                                    <li><a href="event-list.html">Event List View</a></li>
-                                    <li><a href="event-single.html">Event Details</a></li>
-                                    <li><a href="event-single2.html">Event Details 2</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#0">Gallery</a>
-                                <ul>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="gallery-2.html">Gallery Style 2</a></li>
-                                    <li><a href="gallery-fluid.html">Gallery Style 3</a></li>
-                                    <li><a href="gallery-masonary.html">Gallery Style 4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#0" class="active">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html" class="active">Blog</a></li>
-                                    <li><a href="blog-single.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                           
                         </ul>
                     </div>
-                    <a href="causes.html" class="default-btn move-right"><span>Donate <i class="fas fa-heart"></i></span></a>
+                    @guest
+                    <a href="{{ route('login') }}" class="default-btn move-right"><span>Login</span></a>
+                    <a class="nav-link" href="{{ route('register') }}">Registration</a>
+                    @else
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <input type="submit" class="default-btn move-right w-100 mb-0" value="Logout">
+                    </form>
+                    @endguest
                 </div>
             </nav>
         </div>

@@ -34,7 +34,7 @@
                                     <div class="blog__item">
                                         <div class="blog__inner">
                                             <div class="blog__thumb">
-                                                <a href="blog-single.html"><img src="{{'storage/'. $post->preview_image }}" alt="blog-thumb" style="object-fit: cover; width: 100%; height: 440px"></a>
+                                                <a href="blog-single.html"><img src="{{ asset('storage/'. $post->preview_image) }}" alt="blog-thumb" style="object-fit: cover; width: 100%; height: 440px"></a>
                                             </div>
                                             <div class="blog__content">
                                                 <div class="blog__meta">
@@ -42,8 +42,8 @@
                                                         <i class="fas fa-image"></i>
                                                     </div>
                                                     <ul>
-                                                        <li>09 Nov 21</li>
-                                                        <li>24 Comments</li>
+                                                        <li>{{ $date->format('d M Y')}}</li>
+                                                        <li>{{ $post->comments->count()}} Comments</li>
                                                     </ul>
                                                 </div>
                                                 <div class="blog__postcontent">
@@ -53,7 +53,7 @@
                                                         @endif
                                                     </span>
                                                     <p>{!! $post->content !!}</p>
-                                                    <a href="blog-single.html" class="default-btn move-bottom"><span>Read On</span></a>
+                                                    <a href="{{ route('post.show', $post->id ) }}" class="default-btn move-bottom"><span>Read On</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,13 +91,13 @@
                                     <div class="sidebar__post-item">
                                         <div class="sidebar__post-inner">
                                             <div class="sidebar__post-thumb">
-                                                <a href="blog-single.html"><img src="{{'storage/'. $post->preview_image }}" alt="post-thumb"></a>
+                                                <a href="{{ route('post.show', $post->id)}}"><img src="{{'storage/'. $post->preview_image }}" alt="post-thumb"></a>
                                             </div>
                                             <div class="sidebar__post-content">
-                                                <a href="blog-single.html"><h6>{{ $post->title}}</h6></a>
+                                                <a href="{{ route('post.show', $post->id ) }}"><h6>{{ $post->title}}</h6></a>
                                                 <ul>
-                                                    <li>12 Nov 2015,</li>
-                                                    <li>02 Comments</li>
+                                                    <li>{{ $date->format('d M Y')}}</li>
+                                                    <li>{{ $post->comments->count()}} Comments</li>
                                                 </ul>
                                             </div>
                                         </div>
