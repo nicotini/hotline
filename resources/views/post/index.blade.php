@@ -34,7 +34,7 @@
                                     <div class="blog__item">
                                         <div class="blog__inner">
                                             <div class="blog__thumb">
-                                                <a href="blog-single.html"><img src="{{ asset('storage/'. $post->preview_image) }}" alt="blog-thumb" style="object-fit: cover; width: 100%; height: 440px"></a>
+                                                <a href="{{ route('post.show', $post->id ) }}"><img src="{{ asset('storage/'. $post->preview_image) }}" alt="blog-thumb" style="object-fit: cover; width: 100%; height: 440px"></a>
                                             </div>
                                             <div class="blog__content">
                                                 <div class="blog__meta">
@@ -47,7 +47,29 @@
                                                     </ul>
                                                 </div>
                                                 <div class="blog__postcontent">
-                                                    <a href="blog-single.html"><h5>{{ $post->title}}</h5></a>
+                                                    <div class="d-flex justify-content-between">
+                                                        <a href="{{ route('post.show', $post->id) }}"><h5>{{ $post->title}}</h5></a>
+                                                        @auth
+                                                        <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                                        <span>{{ $post->liked_users_count}}</span>
+                                                            @csrf
+                                                            
+                                                            <button type="submit" class="border-0 bg-transparent">
+                                                               
+                                                                <i class="lni lni-heart{{ auth()->user()->likedPosts->contains($post->id) ? '-filled' : ''}}"></i>
+                                                                
+                                                            </button>
+                                                        </form>
+                                                        @endauth
+                                                        @guest
+                                                        <div>
+                                                            <i class="lni lni-heart"></i>
+                                                            <span>{{ $post->liked_users_count}}</span>
+                                                        </div>
+                                                        @endguest
+                                                        
+                                                    </div>
+                                                    
                                                     <span> @if(!is_null($post->category))
                                                         ( Category: {{  $post->category->title }} )
                                                         @endif
@@ -64,63 +86,7 @@
                             {{ $posts->links() }}
                         </div>
                     </div>
-                    <div class="col-lg-4 col-12">
-                        <div class="sidebar">
-                            
-                            <div class="sidebar__catagory mb-5">
-                                <div class="sidebar__head">
-                                    <h4>Blog Categories</h4>
-                                </div>
-                                <div class="sidebar__body">
-                                    <ul>
-                                        @foreach($categories as $category)
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> {{ $category->title }}</a>
-                                            <span>{{ $category->posts->count() }}</span>
-                                        </li>
-                                       @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="sidebar__post mb-5">
-                                <div class="sidebar__head">
-                                    <h4>Recent Blog</h4>
-                                </div>
-                                <div class="sidebar__body">
-                                    @foreach($recentPosts as $post)
-                                    <div class="sidebar__post-item">
-                                        <div class="sidebar__post-inner">
-                                            <div class="sidebar__post-thumb">
-                                                <a href="{{ route('post.show', $post->id)}}"><img src="{{'storage/'. $post->preview_image }}" alt="post-thumb"></a>
-                                            </div>
-                                            <div class="sidebar__post-content">
-                                                <a href="{{ route('post.show', $post->id ) }}"><h6>{{ $post->title}}</h6></a>
-                                                <ul>
-                                                    <li>{{ $date->format('d M Y')}}</li>
-                                                    <li>{{ $post->comments->count()}} Comments</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                           
-                            <div class="sidebar__tags">
-                                <div class="sidebar__head">
-                                    <h4>Tags</h4>
-                                </div>
-                                <div class="sidebar__body">
-                                    <ul>
-                                        @foreach($tags as $tag)
-                                        <li><a href="#">{{ $tag->title }}</a></li>
-                                        @endforeach
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('includes.sidebar')
                 </div>
             </div>
         </div>

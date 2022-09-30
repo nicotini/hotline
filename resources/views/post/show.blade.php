@@ -83,8 +83,27 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="likes-post d-flex justify-content-end">
+                                            @auth
+                                            <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                            <span>{{ $post->liked_users_count}}</span>
+                                                @csrf
+                                                
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                    
+                                                    <i class="lni lni-heart{{ auth()->user()->likedPosts->contains($post->id) ? '-filled' : ''}}"></i>
+                                                    
+                                                </button>
+                                            </form>
+                                            @endauth
+                                            @guest
+                                            <div>
+                                                <i class="lni lni-heart"></i>
+                                                <span>{{ $post->liked_users_count}}</span>
+                                            </div>
+                                            @endguest
+                                        </div>
                                     </div>
-                                   
                                     <div class="blog__navigation">
                                         <ul>
                                             <li><a href="#"><i class="fas fa-chevron-left"></i> Preview Post</a></li>
@@ -132,141 +151,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-12">
-                        <div class="sidebar">
-                            <div class="sidebar__search mb-5">
-                                <form class="d-flex bg-white border rounded">
-                                    <input class="form-control mb-0 border-0" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-none border-0" type="submit"><i class="fas fa-search"></i></button>
-                                </form>
-                            </div>
-                            <div class="sidebar__catagory mb-5">
-                                <div class="sidebar__head">
-                                    <h4>Blog Categories</h4>
-                                </div>
-                                <div class="sidebar__body">
-                                    <ul>
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> Web Design</a>
-                                            <span>07</span>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> Graphic Design</a>
-                                            <span>07</span>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> e-Commerce</a>
-                                            <span>07</span>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> Flesh Animation</a>
-                                            <span>07</span>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> WordPress Theme</a>
-                                            <span>07</span>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> HTML5/CSS3</a>
-                                            <span>07</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="sidebar__post mb-5">
-                                <div class="sidebar__head">
-                                    <h4>Recent Blog</h4>
-                                </div>
-                                <div class="sidebar__body">
-                                    <div class="sidebar__post-item">
-                                        <div class="sidebar__post-inner">
-                                            <div class="sidebar__post-thumb">
-                                                <a href="blog-single.html"><img src="assets/images/blog/post/01.jpg" alt="post-thumb"></a>
-                                            </div>
-                                            <div class="sidebar__post-content">
-                                                <a href="blog-single.html"><h6>Holisticly maintain exceptional value vis-a-vis top-line.</h6></a>
-                                                <ul>
-                                                    <li>12 Nov 2015,</li>
-                                                    <li>02 Comments</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar__post-item">
-                                        <div class="sidebar__post-inner">
-                                            <div class="sidebar__post-thumb">
-                                                <a href="blog-single.html"><img src="assets/images/blog/post/02.jpg" alt="post-thumb"></a>
-                                            </div>
-                                            <div class="sidebar__post-content">
-                                                <a href="blog-single.html"><h6>Holisticly maintain exceptional value vis-a-vis top-line.</h6></a>
-                                                <ul>
-                                                    <li>12 Nov 2015,</li>
-                                                    <li>02 Comments</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar__post-item">
-                                        <div class="sidebar__post-inner">
-                                            <div class="sidebar__post-thumb">
-                                                <a href="blog-single.html"><img src="assets/images/blog/post/03.jpg" alt="post-thumb"></a>
-                                            </div>
-                                            <div class="sidebar__post-content">
-                                                <a href="blog-single.html"><h6>Holisticly maintain exceptional value vis-a-vis top-line.</h6></a>
-                                                <ul>
-                                                    <li>12 Nov 2015,</li>
-                                                    <li>02 Comments</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar__post-item">
-                                        <div class="sidebar__post-inner">
-                                            <div class="sidebar__post-thumb">
-                                                <a href="blog-single.html"><img src="assets/images/blog/post/04.jpg" alt="post-thumb"></a>
-                                            </div>
-                                            <div class="sidebar__post-content">
-                                                <a href="blog-single.html"><h6>Holisticly maintain exceptional value vis-a-vis top-line.</h6></a>
-                                                <ul>
-                                                    <li>12 Nov 2015,</li>
-                                                    <li>02 Comments</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          
-                            <div class="sidebar__tags">
-                                <div class="sidebar__head">
-                                    <h4>Tags</h4>
-                                </div>
-                                <div class="sidebar__body">
-                                    <ul>
-                                        <li><a href="#">design</a></li>
-                                        <li><a href="#">html5</a></li>
-                                        <li><a href="#">css3</a></li>
-                                        <li><a href="#">webdesign</a></li>
-                                        <li><a href="#">illustrator</a></li>
-                                        <li><a href="#">photoshop</a></li>
-                                        <li><a href="#">ui/ux</a></li>
-                                        <li><a href="#">design</a></li>
-                                        <li><a href="#">html5</a></li>
-                                        <li><a href="#">css3</a></li>
-                                        <li><a href="#">webdesign</a></li>
-                                        <li><a href="#">illustrator</a></li>
-                                        <li><a href="#">photoshop</a></li>
-                                        <li><a href="#">ui/ux</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('includes.sidebar')
                 </div>
             </div>
         </div>
     </div>
     <!-- ================> Blog section end here <================== -->
+    @if($relatedPosts->count()> 0)
      <!-- ================> Blog section start here <================== -->
      <div class="blog-section padding--top padding--bottom" id="blog">
         <div class="container">
@@ -311,5 +202,5 @@
         </div>
     </div>
     <!-- ================> Blog section end here <================== -->
-
+ @endif
 @endsection

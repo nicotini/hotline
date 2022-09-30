@@ -11,14 +11,18 @@ use Illuminate\Http\Request;
 
 class ShowController extends Controller
 {
-   public function __invoke(Post $post) 
-   {
-    
-    $date = Carbon::parse($post->created_at);
-    $relatedPosts = Post::where('category_id', $post->category_id)
-                          ->where('id', '!=', $post->id)
-                          ->get()
-                          ->take(4);
-     return view('post.show', compact('post', 'date', 'relatedPosts'));
-   }
+    public function __invoke(Post $post)
+    {
+       $date = Carbon::parse($post->created_at);
+       $relatedPosts = Post::where('category_id', $post->category_id)
+       ->where('id', '!=', $post->id)
+       ->get()
+       ->take(4);
+       $recentPosts = Post::latest()->get()->take(4);
+      
+        $categories = Category::all();
+        $tags = Tag::all();
+      
+        return view('post.show', compact('post', 'date', 'relatedPosts', 'recentPosts', 'categories', 'tags' ));
+    }
 }

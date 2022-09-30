@@ -4,6 +4,7 @@ use App\Http\Controllers\Main\IndexController as MainIndexController;
 use App\Http\Controllers\Post\IndexController as PostIndexController;
 use App\Http\Controllers\Post\ShowController as PostShowController;
 use App\Http\Controllers\Post\Comment\StoreController as PostCommentStoreController;
+use App\Http\Controllers\Post\Like\StoreController as PostLikeStoreController;
 
 use App\Http\Controllers\Admin\Main\IndexController as AdminMainIndexController;
 
@@ -75,6 +76,10 @@ Route::prefix('posts')->name('post.')->group(function () {
 
     Route::prefix('{post}/comments')->name('comments.')->group(function() {
         Route::post('/', PostCommentStoreController::class)->name('store');
+    });
+
+    Route::prefix('{post}/likes')->name('like.')->group(function() {
+        Route::post('/', PostLikeStoreController::class)->name('store');
     });
     
 });

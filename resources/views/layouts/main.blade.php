@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heal</title>
     <link rel="shortcut icon" href="{{asset('assets/css/favicon.png')}}" type="image/x-icon">
-
+    <link href="{{asset('assets/admin/css/icons.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/all.min.css')}}">
