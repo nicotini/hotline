@@ -1,8 +1,13 @@
 <?php
-
-use App\Http\Controllers\Main\IndexController;
+ 
+use App\Http\Controllers\Main\IndexController as MainIndexController;
+use App\Http\Controllers\Post\IndexController as PostIndexController;
+use App\Http\Controllers\Post\ShowController as PostShowController;
+use App\Http\Controllers\Post\Comment\StoreController as PostCommentStoreController;
+use App\Http\Controllers\Post\Like\StoreController as PostLikeStoreController;
 
 use App\Http\Controllers\Admin\Main\IndexController as AdminMainIndexController;
+
 
 use App\Http\Controllers\Personal\Main\IndexController as PersonalMainIndexController;
 use App\Http\Controllers\Personal\Liked\IndexController as PersonalLikedIndexController;
@@ -62,8 +67,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group([], function () {
-    Route::get('/', IndexController::class)->name('index');
+Route::name('main.')->group(function () {
+    Route::get('/', MainIndexController::class)->name('index');
+});
+Route::prefix('posts')->name('post.')->group(function () {
+    Route::get('/', PostIndexController::class)->name('index');
+    Route::get('/{post}', PostShowController::class)->name('show');
+
+    Route::prefix('{post}/comments')->name('comments.')->group(function() {
+        Route::post('/', PostCommentStoreController::class)->name('store');
+    });
+
+    Route::prefix('{post}/likes')->name('like.')->group(function() {
+        Route::post('/', PostLikeStoreController::class)->name('store');
+    });
+    
 });
 
 Route::middleware(['auth', 'verified'])->prefix('personal')->name('personal.')->group(function () {
