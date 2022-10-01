@@ -9,7 +9,7 @@
                                     <ul>
                                         @foreach($categories as $category)
                                         <li>
-                                            <a href="#"><i class="fas fa-chevron-right"></i> {{ $category->title }}</a>
+                                            <a href="{{ route('category.post.index', $category->id) }}"><i class="fas fa-chevron-right"></i> {{ $category->title }}</a>
                                             <span>{{ $category->posts->count() }}</span>
                                         </li>
                                        @endforeach

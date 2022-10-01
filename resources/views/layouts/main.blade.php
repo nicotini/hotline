@@ -49,6 +49,9 @@
                             <li>
                                 <a href="{{ route('main.index')}}" class="active">Blog</a>
                             </li>
+                            <li>
+                                <a href="{{ route('category.index')}}" class="active">Categories</a>
+                            </li>
                            
                         </ul>
                     </div>
@@ -202,7 +205,7 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="footer__copyright">
-                            <p>&copy; Heal 2021, All Right Reserves | Powered By <a href="https://themeforest.net/user/codexcoder">CodexCoder</a></p>
+                            <p>&copy; Heal 2021, All Right Reserves </p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">

@@ -18,7 +18,8 @@ use App\Http\Controllers\Personal\Comment\EditController as PersonalCommentEditC
 use App\Http\Controllers\Personal\Comment\UpdateController as PersonalCommentUpdateController;
 use App\Http\Controllers\Personal\Comment\DestroyController as PersonalCommentDestroyController;
 
-
+use App\Http\Controllers\Category\IndexController as CategoryIndexController;
+use App\Http\Controllers\Category\Post\IndexController as CategoryPostIndexController;
 
 
 use App\Http\Controllers\Admin\Category\IndexController as AdminCategoryIndexController;
@@ -82,6 +83,15 @@ Route::prefix('posts')->name('post.')->group(function () {
         Route::post('/', PostLikeStoreController::class)->name('store');
     });
     
+});
+
+Route::prefix('categories')->name('category.')->group(function () {
+    Route::get('/', CategoryIndexController::class)->name('index');
+
+    Route::prefix('{category}/posts')->name('post.')->group(function () {
+        Route::get('/', CategoryPostIndexController::class)->name('index');
+       
+    });
 });
 
 Route::middleware(['auth', 'verified'])->prefix('personal')->name('personal.')->group(function () {
