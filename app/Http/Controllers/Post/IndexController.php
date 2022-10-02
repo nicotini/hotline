@@ -14,16 +14,13 @@ class IndexController extends Controller
     public function __invoke()
     {
         $posts = Post::paginate(4);
-        $recentPosts = Post::latest()->get()->take(4);
-      
-        $categories = Category::all();
-        $tags = Tag::all();
+        
         foreach($posts as $post) {
             $date = Carbon::parse($post->created_at);
         }
         
         
         
-        return view('post.index', compact('posts', 'recentPosts', 'categories', 'tags', 'date'));
+        return view('post.index', compact('posts', 'date'));
     }
 }
