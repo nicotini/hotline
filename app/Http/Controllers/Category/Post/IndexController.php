@@ -16,13 +16,6 @@ class IndexController extends Controller
    public function __invoke(Category $category) 
    {
      $posts = $category->posts()->paginate(6);
-     
-       if($posts->count() > 0){
-        foreach($posts as $post) {
-          $post['date'] = Carbon::parse($post->created_at);
-      }
-    }
-    
     
      return view('category.post.index', compact('posts'));
    }

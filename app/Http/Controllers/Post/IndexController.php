@@ -15,9 +15,6 @@ class IndexController extends Controller
     {
         $posts = Post::paginate(4);
         
-        foreach($posts as $post) {
-            $post['date'] = Carbon::parse($post->created_at);
-        }
         
         
         

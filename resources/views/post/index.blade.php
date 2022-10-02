@@ -42,7 +42,7 @@
                                                         <i class="fas fa-image"></i>
                                                     </div>
                                                     <ul>
-                                                        <li>{{ $post['date']->format('d M Y')}}</li>
+                                                        <li>{{ $post->dateAsCarbon->format('d M Y')}}</li>
                                                         <li>{{ $post->comments->count()}} Comments</li>
                                                     </ul>
                                                 </div>

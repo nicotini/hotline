@@ -12,7 +12,7 @@
                 <div class="sidebar__post-content">
                     <a href="{{ route('post.show', $post->id ) }}"><h6>{{ $post->title}}</h6></a>
                     <ul>
-                        <li>{{ $post->created_at }}</li>
+                        <li>{{ $post->dateAsCarbon->format('d M Y') }}</li>
                         <li>{{ $post->comments->count()}} Comments</li>
                     </ul>
                 </div>

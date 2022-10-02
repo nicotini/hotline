@@ -15,11 +15,9 @@ class IndexController extends Controller
    {
      $categories = Category::all();
      $posts = Post::all();
-        foreach($posts as $post) {
-          $date = Carbon::parse($post->created_at);
-      }
+       
     
     
-     return view('category.index', compact('categories', 'posts', 'date'));
+     return view('category.index', compact('categories', 'posts'));
    }
 }
