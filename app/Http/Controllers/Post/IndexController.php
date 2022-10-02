@@ -16,11 +16,11 @@ class IndexController extends Controller
         $posts = Post::paginate(4);
         
         foreach($posts as $post) {
-            $date = Carbon::parse($post->created_at);
+            $post['date'] = Carbon::parse($post->created_at);
         }
         
         
         
-        return view('post.index', compact('posts', 'date'));
+        return view('post.index', compact('posts'));
     }
 }
